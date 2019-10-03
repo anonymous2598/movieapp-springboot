@@ -11,5 +11,6 @@ public interface MovieService {
      boolean deleteMovieInfo(Long repoId);
 //     Optional<MovieInfo> getRepoInfoById (Long repoId);
      MovieInfo updateMovieInfo(MovieInfo movieInfo);
+     List<MovieInfo> getMovieInfoByName(String movieName);
 
 }

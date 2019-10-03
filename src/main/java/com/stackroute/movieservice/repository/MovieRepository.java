@@ -10,5 +10,6 @@ import java.util.List;
 
 @Repository
 public interface MovieRepository extends JpaRepository<MovieInfo,Long> {
-
+    @Query(value = "SELECT * FROM MOVIE_INFO WHERE MOVIE_NAME=:NAME",nativeQuery = true)
+    List<MovieInfo> getMovieInfoByName(@Param("NAME") String s);
 }

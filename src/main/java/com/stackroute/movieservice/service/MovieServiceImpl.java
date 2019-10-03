@@ -57,6 +57,13 @@ public class MovieServiceImpl implements MovieService {
         return null;
     }
 
+    @Override
+    public List<MovieInfo> getMovieInfoByName(String movieName)
+    {
+        List<MovieInfo> list = new ArrayList<>();
 
+        list= movieRepository.getMovieInfoByName(movieName);
+        return list;
+    }
 
 }

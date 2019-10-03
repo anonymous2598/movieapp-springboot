@@ -61,7 +61,16 @@ public class MovieController {
         return responseEntity;
     }
 
+    @GetMapping("a")
+    public ResponseEntity<?> getMovieByName(@RequestBody String movieName)
+    {
+        ResponseEntity responseEntity;
+        List<MovieInfo> list = new ArrayList<>();
+        list = movieService.getMovieInfoByName(movieName);
+        responseEntity= new ResponseEntity<List<MovieInfo>>(list,HttpStatus.ACCEPTED);
 
+        return responseEntity;
+    }
 
 
 }
