@@ -9,3 +9,5 @@ This branch contains:
 4)Using Swagger2 to generate API Documentation
 
 5)Exception Handling For MovieDoesNotExist and MovieAlreadyExists exceptions and propagation
+
+6)Running logic on Spring Startup Using ApplicationListener and CommandLineRunner

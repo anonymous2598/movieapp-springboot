@@ -10,6 +10,16 @@ import javax.persistence.Id;
 @ApiModel(description = "All details about the Movie")
 public class MovieInfo {
 
+    @Override
+    public String toString() {
+        return "MovieInfo{" +
+                "movieId=" + movieId +
+                ", movieLanguage='" + movieLanguage + '\'' +
+                ", movieOverview='" + movieOverview + '\'' +
+                ", movieName='" + movieName + '\'' +
+                '}';
+    }
+
     public long getMovieId() {
         return movieId;
     }
