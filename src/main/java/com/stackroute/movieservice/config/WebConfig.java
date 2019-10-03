@@ -14,4 +14,5 @@ public class WebConfig {
         servletRegistrationBean.addUrlMappings("/console/*");
         return servletRegistrationBean;
     }
+
 }

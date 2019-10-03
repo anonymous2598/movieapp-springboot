@@ -3,6 +3,8 @@ package com.stackroute.movieservice.controller;
 
 import com.stackroute.movieservice.domain.MovieInfo;
 import com.stackroute.movieservice.service.MovieService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/")
+@Api(value="Movie Management System", description="Operations pertaining to movie in Movie Management System")
 public class MovieController {
     MovieService movieService;
 
@@ -21,6 +24,7 @@ public class MovieController {
         this.movieService = movieService;
     }
 
+    @ApiOperation(value = "Add a movie into the list of movies", response = ResponseEntity.class)
     @PostMapping("movie")
     public ResponseEntity<?> saveMovieInfo(@RequestBody MovieInfo movieInfo){
 
@@ -32,12 +36,14 @@ public class MovieController {
         return responseEntity;
     }
 
+    @ApiOperation(value = "View a list of available movies", response = ResponseEntity.class)
     @GetMapping("movie")
     public ResponseEntity<?> getMovies()
     {
         return new ResponseEntity<List<MovieInfo>>(movieService.getMovies(), HttpStatus.OK);
     }
 
+    @ApiOperation(value = "Delete a movie from the list of movies", response = ResponseEntity.class)
     @DeleteMapping("movie")
     public ResponseEntity<?> deleteMovieInfo(@RequestBody Long repoId)
     {
@@ -49,6 +55,7 @@ public class MovieController {
         return responseEntity;
     }
 
+    @ApiOperation(value = "Update a movie in the list of movies", response = ResponseEntity.class)
     @PutMapping("movie")
     public ResponseEntity<?> updateMovie(@RequestBody MovieInfo movieInfo)
     {
@@ -61,6 +68,7 @@ public class MovieController {
         return responseEntity;
     }
 
+    @ApiOperation(value = "Find a movie by Name from list of movies", response = ResponseEntity.class)
     @GetMapping("a")
     public ResponseEntity<?> getMovieByName(@RequestBody String movieName)
     {

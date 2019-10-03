@@ -1,10 +1,13 @@
 package com.stackroute.movieservice.domain;
 
 
+import io.swagger.annotations.ApiModel;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
+@ApiModel(description = "All details about the Movie")
 public class MovieInfo {
 
     public long getMovieId() {
