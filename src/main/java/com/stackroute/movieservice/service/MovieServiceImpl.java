@@ -72,10 +72,10 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     public List<MovieInfo> getMovieInfoByName(String movieName) throws MovieDoesNotExist {
-        List<MovieInfo> list = new ArrayList<>();
+        List<MovieInfo> list;
 
         list= movieRepository.getMovieInfoByName(movieName);
-        if(list==null)
+        if(list.isEmpty())
         {
             throw new MovieDoesNotExist("No Movies Found By Given Name");
         }

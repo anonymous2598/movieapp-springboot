@@ -90,7 +90,7 @@ public class MovieController {
     public ResponseEntity<?> getMovieByName(@RequestBody String movieName)
     {
         ResponseEntity responseEntity;
-        List<MovieInfo> list = new ArrayList<>();
+        List<MovieInfo> list;
         try
         {
             list = movieService.getMovieInfoByName(movieName);
@@ -103,6 +103,5 @@ public class MovieController {
         }
         return responseEntity;
     }
-
 
 }
