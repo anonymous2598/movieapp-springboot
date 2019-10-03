@@ -11,3 +11,5 @@ This branch contains:
 5)Exception Handling For MovieDoesNotExist and MovieAlreadyExists exceptions and propagation
 
 6)Running logic on Spring Startup Using ApplicationListener and CommandLineRunner
+
+7)GlobalExceptionHandler Class
