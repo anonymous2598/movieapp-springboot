@@ -2,6 +2,8 @@ package com.stackroute.movieservice.controller;
 
 
 import com.stackroute.movieservice.domain.MovieInfo;
+import com.stackroute.movieservice.exceptions.MovieAlreadyExists;
+import com.stackroute.movieservice.exceptions.MovieDoesNotExist;
 import com.stackroute.movieservice.service.MovieService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -27,12 +29,16 @@ public class MovieController {
     @ApiOperation(value = "Add a movie into the list of movies", response = ResponseEntity.class)
     @PostMapping("movie")
     public ResponseEntity<?> saveMovieInfo(@RequestBody MovieInfo movieInfo){
-
         ResponseEntity responseEntity;
-
+        try
+        {
             movieService.saveMovieInfo(movieInfo);
             responseEntity= new ResponseEntity<String>("Successfully created!", HttpStatus.CREATED);
-
+        }
+        catch (MovieAlreadyExists e)
+        {
+            responseEntity = new ResponseEntity<String>(e.getMessage(),HttpStatus.CONFLICT);
+        }
         return responseEntity;
     }
 
@@ -49,9 +55,15 @@ public class MovieController {
     {
 //        System.out.println("here");
         ResponseEntity responseEntity;
+        try
+        {
             movieService.deleteMovieInfo(repoId);
-            responseEntity= new ResponseEntity<String>("Deleted Successfully", HttpStatus.ACCEPTED);
-
+            responseEntity= new ResponseEntity<String>("Deleted Successfully",HttpStatus.ACCEPTED);
+        }
+        catch (MovieDoesNotExist e)
+        {
+            responseEntity = new ResponseEntity<String>(e.getMessage(),HttpStatus.METHOD_NOT_ALLOWED);
+        }
         return responseEntity;
     }
 
@@ -61,10 +73,15 @@ public class MovieController {
     {
 //        System.out.println("here");
         ResponseEntity responseEntity;
-
+        try
+        {
             movieService.updateMovieInfo(movieInfo);
-            responseEntity= new ResponseEntity<String>("Updated Successfully", HttpStatus.ACCEPTED);
-
+            responseEntity= new ResponseEntity<String>("Updated Successfully",HttpStatus.ACCEPTED);
+        }
+        catch (MovieDoesNotExist e)
+        {
+            responseEntity = new ResponseEntity<String>(e.getMessage(), HttpStatus.valueOf(406));
+        }
         return responseEntity;
     }
 
@@ -74,9 +91,16 @@ public class MovieController {
     {
         ResponseEntity responseEntity;
         List<MovieInfo> list = new ArrayList<>();
-        list = movieService.getMovieInfoByName(movieName);
-        responseEntity= new ResponseEntity<List<MovieInfo>>(list,HttpStatus.ACCEPTED);
+        try
+        {
+            list = movieService.getMovieInfoByName(movieName);
+            responseEntity= new ResponseEntity<List<MovieInfo>>(list,HttpStatus.ACCEPTED);
 
+        }
+        catch (MovieDoesNotExist e)
+        {
+            responseEntity = new ResponseEntity<String>(e.getMessage(), HttpStatus.valueOf(406));
+        }
         return responseEntity;
     }
 
