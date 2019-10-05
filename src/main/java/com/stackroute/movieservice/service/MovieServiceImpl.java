@@ -7,13 +7,14 @@ import com.stackroute.movieservice.exceptions.MovieDoesNotExist;
 import com.stackroute.movieservice.repository.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
-@Qualifier(value = "dummy")
+@Profile("original")
 public class MovieServiceImpl implements MovieService {
 
     MovieRepository movieRepository;
@@ -26,7 +27,7 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     public List<MovieInfo> getMovies() {
-
+//        System.out.println("here");
         return movieRepository.findAll();
 
     }

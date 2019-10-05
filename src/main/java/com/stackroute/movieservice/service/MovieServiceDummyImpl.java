@@ -6,12 +6,13 @@ import com.stackroute.movieservice.exceptions.MovieDoesNotExist;
 import com.stackroute.movieservice.repository.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-@Primary
+@Profile("dummy")
 public class MovieServiceDummyImpl implements MovieService {
 
     MovieRepository movieRepository;

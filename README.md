@@ -19,3 +19,5 @@ This branch contains:
 9)Added Lombok plugin and annotations
 
 10)Added DummyServiceImpl and using @Primary and @Qualifier annotations to choose 
+
+11)Using @Profile annotation to choose the service implementations
