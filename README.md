@@ -17,3 +17,5 @@ This branch contains:
 8)Removed Hard Coded values using @Value, @PropertySource, Environment,@ConfigurationProperties
 
 9)Added Lombok plugin and annotations
+
+10)Added DummyServiceImpl and using @Primary and @Qualifier annotations to choose 

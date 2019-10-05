@@ -1,32 +1,30 @@
 package com.stackroute.movieservice.service;
 
-
 import com.stackroute.movieservice.domain.MovieInfo;
 import com.stackroute.movieservice.exceptions.MovieAlreadyExists;
 import com.stackroute.movieservice.exceptions.MovieDoesNotExist;
 import com.stackroute.movieservice.repository.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
-@Qualifier(value = "dummy")
-public class MovieServiceImpl implements MovieService {
+@Primary
+public class MovieServiceDummyImpl implements MovieService {
 
     MovieRepository movieRepository;
 
     @Autowired
-    public MovieServiceImpl(MovieRepository movieRepository)
+    public MovieServiceDummyImpl(MovieRepository movieRepository)
     {
         this.movieRepository = movieRepository;
     }
 
     @Override
     public List<MovieInfo> getMovies() {
-
+//        System.out.println("bada tum tuss");
         return movieRepository.findAll();
 
     }
@@ -83,5 +81,4 @@ public class MovieServiceImpl implements MovieService {
         }
         return list;
     }
-
 }
