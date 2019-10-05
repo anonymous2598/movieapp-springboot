@@ -55,6 +55,17 @@ public class MovieInfo {
     @Id
     private long movieId;
     private String movieLanguage;
+
+    public MovieInfo(long movieId, String movieLanguage, String movieOverview, String movieName) {
+        this.movieId = movieId;
+        this.movieLanguage = movieLanguage;
+        this.movieOverview = movieOverview;
+        this.movieName = movieName;
+    }
+
+    public MovieInfo() {
+    }
+
     private String movieOverview;
     private String movieName;
 

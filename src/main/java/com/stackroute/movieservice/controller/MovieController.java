@@ -18,7 +18,8 @@ import java.util.List;
 @RequestMapping("/api/")
 @Api(value="Movie Management System", description="Operations pertaining to movie in Movie Management System")
 public class MovieController {
-    MovieService movieService;
+   private MovieService movieService;
+   private ResponseEntity responseEntity;
 
 
     public MovieController(MovieService movieService)
@@ -29,7 +30,7 @@ public class MovieController {
     @ApiOperation(value = "Add a movie into the list of movies", response = ResponseEntity.class)
     @PostMapping("movie")
     public ResponseEntity<?> saveMovieInfo(@RequestBody MovieInfo movieInfo){
-        ResponseEntity responseEntity;
+
         try
         {
             movieService.saveMovieInfo(movieInfo);
@@ -54,7 +55,6 @@ public class MovieController {
     public ResponseEntity<?> deleteMovieInfo(@RequestBody Long repoId)
     {
 //        System.out.println("here");
-        ResponseEntity responseEntity;
         try
         {
             movieService.deleteMovieInfo(repoId);
@@ -72,7 +72,6 @@ public class MovieController {
     public ResponseEntity<?> updateMovie(@RequestBody MovieInfo movieInfo)
     {
 //        System.out.println("here");
-        ResponseEntity responseEntity;
         try
         {
             movieService.updateMovieInfo(movieInfo);
@@ -89,7 +88,6 @@ public class MovieController {
     @GetMapping("a")
     public ResponseEntity<?> getMovieByName(@RequestBody String movieName)
     {
-        ResponseEntity responseEntity;
         List<MovieInfo> list;
         try
         {

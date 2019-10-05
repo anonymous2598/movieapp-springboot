@@ -13,3 +13,5 @@ This branch contains:
 6)Running logic on Spring Startup Using ApplicationListener and CommandLineRunner
 
 7)GlobalExceptionHandler Class
+
+8)Removed Hard Coded values using @Value, @PropertySource, Environment,@ConfigurationProperties

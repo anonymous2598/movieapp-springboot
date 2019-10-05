@@ -5,24 +5,28 @@ import com.stackroute.movieservice.exceptions.MovieAlreadyExists;
 import com.stackroute.movieservice.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
 @Component
+@ConfigurationProperties()
 public class CommandLineRunnerStartup implements CommandLineRunner {
     MovieService movieService;
+
+    @Autowired
+    private Environment environment;
 
     @Autowired
     public CommandLineRunnerStartup(MovieService movieService)
     {
         this.movieService=movieService;
     }
+
     @Override
     public void run(String... args) throws Exception {
-        MovieInfo movieInfo1= new MovieInfo();
-        movieInfo1.setMovieId(2);
-        movieInfo1.setMovieLanguage("hindi");
-        movieInfo1.setMovieName("test2");
-        movieInfo1.setMovieOverview("okay");
+        MovieInfo movieInfo1= new MovieInfo(Long.parseLong(environment.getProperty("movie2.id")),environment.getProperty("movie2.language"),
+                environment.getProperty("movie2.overview"),environment.getProperty("movie2.name"));
         try {
             movieService.saveMovieInfo(movieInfo1);
 
