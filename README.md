@@ -15,3 +15,5 @@ This branch contains:
 7)GlobalExceptionHandler Class
 
 8)Removed Hard Coded values using @Value, @PropertySource, Environment,@ConfigurationProperties
+
+9)Added Lombok plugin and annotations
