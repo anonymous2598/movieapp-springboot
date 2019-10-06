@@ -27,3 +27,5 @@ This branch contains:
 13)2 properties files. application-dev.properties for h2 and application-prod.properties for mySQL
 
 14)Added Spring developer tools
+
+15)Added Sping boot actuator to collect metrics for service end points
