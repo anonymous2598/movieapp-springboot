@@ -23,3 +23,5 @@ This branch contains:
 11)Using @Profile annotation to choose the service implementations
 
 12)Replacing h2 with mySQL
+
+13)2 properties files. application-dev.properties for h2 and application-prod.properties for mySQL
