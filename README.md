@@ -25,3 +25,5 @@ This branch contains:
 12)Replacing h2 with mySQL
 
 13)2 properties files. application-dev.properties for h2 and application-prod.properties for mySQL
+
+14)Added Spring developer tools
