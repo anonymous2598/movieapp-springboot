@@ -21,3 +21,5 @@ This branch contains:
 10)Added DummyServiceImpl and using @Primary and @Qualifier annotations to choose 
 
 11)Using @Profile annotation to choose the service implementations
+
+12)Replacing h2 with mySQL
